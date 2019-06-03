@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        
+        <record id="sedot_wizard_view" model="ir.ui.view">
+            <field name="name">Sedot</field>
+            <field name="model">vit.sedot_wizard</field>
+            <field name="arch" type="xml">
+                <form string="Sedot">
+
+                    <h1>Proses penyedotan data mungkin memakan waktu yang lama. Anda yakin?</h1>
+
+                    <footer>
+                        <button string="Confirm" icon="fa-check-circle" name="confirm_button" type="object" class="btn-primary"/>
+                        <button string="Cancel" icon="fa-times" class="btn-default" special="cancel" />
+                    </footer>
+                </form>
+            </field>
+        </record>
+        
+        <act_window id="sedot_wizard_action"
+            name="Sedot"
+            src_model="hr.employee"
+            res_model="vit.sedot_wizard"
+            view_type="form" 
+            view_mode="form"
+            key2="client_action_multi" target="new"
+            />
+    
+        <menuitem name="Sedot MySQL No PLPGSQL"
+            action="sedot_wizard_action"
+            id="menu_sedot_wizard" 
+            parent="hr.menu_human_resources_configuration"
+            sequence="100"
+        />    
+    </data>
+</openerp>
